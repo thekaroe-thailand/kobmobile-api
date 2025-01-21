@@ -9,6 +9,7 @@ const cors = require("cors");
 const { UserController } = require("./controllers/UserController");
 const { CompanyController } = require("./controllers/CompanyController");
 const { ProductController } = require("./controllers/ProductController");
+const { SellController } = require("./controllers/SellController");
 
 //
 // middleware
@@ -22,6 +23,11 @@ app.get("/", (req, res) => {
 });
 
 //
+// sell
+//
+app.post("/api/sell/create", SellController.create);
+
+//
 // buy
 //
 app.post("/api/buy/create", ProductController.create);
@@ -33,6 +39,8 @@ app.delete("/api/buy/remove/:id", ProductController.remove);
 // user
 //
 app.post("/api/user/signin", UserController.signIn);
+app.get("/api/user/info", UserController.info);
+app.put("/api/user/update", UserController.update);
 
 //
 // company
