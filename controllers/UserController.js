@@ -17,7 +17,9 @@ module.exports = {
                     }
                 });
 
-                if (!user) return res.status(401).json({ message: "User not found" });
+                if (!user) {
+                    return res.status(401).json({ message: "User not found" });
+                }
 
                 const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: "7d" });
 
@@ -52,7 +54,7 @@ module.exports = {
                 const oldUser = await prisma.user.findFirst({
                     where: { id: decoded.id }
                 });
-                const newPassword = req.body.password !== undefined ? req.body.password : oldUser.password;
+                const newPassword = req.body.password !== "" ? req.body.password : oldUser.password;
                 await prisma.user.update({
                     where: { id: decoded.id },
                     data: {
