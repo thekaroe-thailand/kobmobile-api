@@ -10,6 +10,7 @@ const { UserController } = require("./controllers/UserController");
 const { CompanyController } = require("./controllers/CompanyController");
 const { ProductController } = require("./controllers/ProductController");
 const { SellController } = require("./controllers/SellController");
+const { ServiceController } = require("./controllers/ServiceController");
 
 //
 // middleware
@@ -21,6 +22,14 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
     res.send("Hello World");
 });
+
+//
+// service
+//
+app.post("/api/service/create", ServiceController.create);
+app.get("/api/service/list", ServiceController.list);
+app.put("/api/service/update/:id", ServiceController.update);
+app.delete("/api/service/remove/:id", ServiceController.remove);
 
 //
 // sell
@@ -44,6 +53,7 @@ app.delete("/api/buy/remove/:id", ProductController.remove);
 app.post("/api/user/signin", UserController.signIn);
 app.get("/api/user/info", UserController.info);
 app.put("/api/user/update", UserController.update);
+app.get("/api/user/list", UserController.list);
 
 //
 // company

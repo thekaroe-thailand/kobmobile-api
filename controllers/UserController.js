@@ -67,6 +67,22 @@ module.exports = {
             } catch (error) {
                 res.status(500).json({ message: error.message });
             }
+        },
+        list: async (req, res) => {
+            try {
+                const users = await prisma.user.findMany({
+                    where: {
+                        status: "active"
+                    },
+                    orderBy: {
+                        id: "desc"
+                    }
+                });
+
+                res.json(users);
+            } catch (error) {
+                res.status(500).json({ message: error.message });
+            }
         }
     }
 }
