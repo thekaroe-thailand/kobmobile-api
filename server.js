@@ -38,6 +38,7 @@ app.post("/api/sell/create", SellController.create);
 app.get("/api/sell/list", SellController.list);
 app.delete("/api/sell/remove/:id", SellController.remove);
 app.get("/api/sell/confirm", SellController.confirm);
+app.get("/api/sell/dashboard", SellController.dashboard);
 
 //
 // buy
@@ -54,6 +55,9 @@ app.post("/api/user/signin", UserController.signIn);
 app.get("/api/user/info", UserController.info);
 app.put("/api/user/update", UserController.update);
 app.get("/api/user/list", UserController.list);
+app.post("/api/user/create", UserController.create);
+app.put("/api/user/update/:id", UserController.updateRow);
+app.delete("/api/user/remove/:id", UserController.remove);
 
 //
 // company
