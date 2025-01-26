@@ -38,13 +38,14 @@ app.post("/api/sell/create", SellController.create);
 app.get("/api/sell/list", SellController.list);
 app.delete("/api/sell/remove/:id", SellController.remove);
 app.get("/api/sell/confirm", SellController.confirm);
-app.get("/api/sell/dashboard", SellController.dashboard);
-
+app.get("/api/sell/dashboard/:year", SellController.dashboard);
+app.get("/api/sell/history", SellController.history);
+app.get("/api/sell/info/:id", SellController.info);
 //
 // buy
 //
 app.post("/api/buy/create", ProductController.create);
-app.get("/api/buy/list", ProductController.list);
+app.get("/api/buy/list/:page", ProductController.list);
 app.put("/api/buy/update/:id", ProductController.update);
 app.delete("/api/buy/remove/:id", ProductController.remove);
 
